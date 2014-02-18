@@ -57,12 +57,9 @@ public class CommentView extends BaseActivity {
 	
 	@Override
 	public void onPeopleLoaded(ConnectionResult status, PersonBuffer personBuffer, String nextPageToken) {
-		if (status.getErrorCode() == ConnectionResult.SUCCESS) {
-			mPlusPerson = personBuffer.get(0);
-			userPlusID = mPlusPerson.getId();
-		}
+		assignUserID(status, personBuffer);
 	}
-	
+
 	/* This adds the Comment to the Database */
 	private boolean addCommentToDB() {
 		// TODO add a link checker

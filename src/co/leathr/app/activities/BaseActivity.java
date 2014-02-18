@@ -10,6 +10,7 @@ import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailed
 import com.google.android.gms.plus.PlusClient;
 import com.google.android.gms.plus.PlusClient.OnPeopleLoadedListener;
 import com.google.android.gms.plus.model.people.Person;
+import com.google.android.gms.plus.model.people.PersonBuffer;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -104,6 +105,13 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 	protected void gotoHomeView(Context classDotThis) {
 		Intent homeViewIntent = new Intent(classDotThis, HomeView.class);
 		startActivity(homeViewIntent);
+	}
+	
+	public void assignUserID(ConnectionResult status, PersonBuffer personBuffer) {
+		if (status.getErrorCode() == ConnectionResult.SUCCESS) {
+			mPlusPerson = personBuffer.get(0);
+			userPlusID = mPlusPerson.getId();
+		}
 	}
 
 }
