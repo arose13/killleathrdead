@@ -1,0 +1,21 @@
+# view AndroidManifest.xml #generated:48
+-keep class co.leathr.app.views.CommentView { <init>(...); }
+
+# view AndroidManifest.xml #generated:38
+-keep class co.leathr.app.views.HomeView { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class co.leathr.app.views.LoginView { <init>(...); }
+
+# view res/layout/arc_menu.xml #generated:7
+-keep class com.capricorn.ArcLayout { <init>(...); }
+
+# view res/layout/ray_menu.xml #generated:5
+-keep class com.capricorn.RayLayout { <init>(...); }
+
+# view res/layout/home_view.xml #generated:25
+-keep class com.capricorn.RayMenu { <init>(...); }
+
+# view res/layout/login_view.xml #generated:6
+-keep class com.google.android.gms.common.SignInButton { <init>(...); }
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background Colors -->
+    <color name="background_DarkGrey">#181718</color>
+    <color name="background_NightLight">#28263d</color>
+    <color name="background_NightDark">#000028</color>
+    <color name="background_DayLight">#e6f0f0</color>
+    <color name="background_DayDark">#c9e5e0</color>
+    
+    <!-- Button Colors -->
+    <color name="btn_Aquamarine">#42b0a7</color>
+</resources>

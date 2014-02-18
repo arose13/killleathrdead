@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="networkerror">Network Error</string>
+    <string name="signingin">Signing in#8230;</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Leathr</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <!-- Hints and Toasts -->
+    <string name="commentHint">What\'s on your mind?</string>
+    <string name="commentEmptyToast">You have not wrote anything</string>
+    
+    <!-- Screen Strings -->
+    <string name="postBtn">Post</string>
+
+</resources>
