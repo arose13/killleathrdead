@@ -323,15 +323,17 @@ containing a value of this type.
         public static final int write_comment=0x7f020051;
     }
     public static final class id {
-        public static final int action_settings=0x7f05000e;
+        public static final int action_settings=0x7f050010;
         public static final int commentText=0x7f050008;
-        public static final int comment_action_post=0x7f05000d;
+        public static final int comment_action_post=0x7f05000f;
         public static final int control_hint=0x7f050007;
         public static final int control_layout=0x7f050006;
         public static final int hybrid=0x7f050004;
         public static final int item_layout=0x7f050005;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
+        public static final int quoteSourceText=0x7f05000e;
+        public static final int quoteText=0x7f05000d;
         public static final int rayMenu=0x7f05000b;
         public static final int satellite=0x7f050002;
         public static final int signInButton=0x7f05000c;
@@ -347,7 +349,8 @@ containing a value of this type.
         public static final int comment_view=0x7f030001;
         public static final int home_view=0x7f030002;
         public static final int login_view=0x7f030003;
-        public static final int ray_menu=0x7f030004;
+        public static final int quote_view=0x7f030004;
+        public static final int ray_menu=0x7f030005;
     }
     public static final class menu {
         public static final int comment_view=0x7f0a0000;
@@ -459,6 +462,8 @@ containing a value of this type.
         /**  Screen Strings 
          */
         public static final int postBtn=0x7f060021;
+        public static final int quote_hint=0x7f060022;
+        public static final int quote_source_hint=0x7f060023;
         public static final int signingin=0x7f06001b;
     }
     public static final class style {

@@ -8,6 +8,8 @@
     <!-- Hints and Toasts -->
     <string name="commentHint">What\'s on your mind?</string>
     <string name="commentEmptyToast">You have not wrote anything</string>
+    <string name="quote_hint">Quote</string>
+    <string name="quote_source_hint">Source (optional)</string>
     
     <!-- Screen Strings -->
     <string name="postBtn">Post</string>
