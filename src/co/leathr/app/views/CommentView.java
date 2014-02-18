@@ -27,7 +27,7 @@ public class CommentView extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.comment_view);
 		
-		/* Text Entry */
+		/* Start Views */
 		commentEditText = (EditText) findViewById(R.id.commentText);
 		typeFaceConstructor(commentEditText, AppData.Fonts.Roboto.REGULAR);
 	}
