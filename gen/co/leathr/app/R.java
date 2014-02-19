@@ -461,7 +461,8 @@ containing a value of this type.
         public static final int networkerror=0x7f06001a;
         /**  Screen Strings 
          */
-        public static final int postBtn=0x7f060021;
+        public static final int postBtn=0x7f060024;
+        public static final int quoteEmptyToast=0x7f060021;
         public static final int quote_hint=0x7f060022;
         public static final int quote_source_hint=0x7f060023;
         public static final int signingin=0x7f06001b;
