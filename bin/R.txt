@@ -187,7 +187,8 @@ int string common_signin_button_text 0x7f060012
 int string common_signin_button_text_long 0x7f060013
 int string hello_world 0x7f06001e
 int string networkerror 0x7f06001a
-int string postBtn 0x7f060021
+int string postBtn 0x7f060024
+int string quoteEmptyToast 0x7f060021
 int string quote_hint 0x7f060022
 int string quote_source_hint 0x7f060023
 int string signingin 0x7f06001b
