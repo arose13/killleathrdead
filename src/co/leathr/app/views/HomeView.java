@@ -6,9 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.capricorn.RayMenu;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.plus.model.people.Person;
 import com.google.android.gms.plus.model.people.PersonBuffer;
@@ -74,8 +74,8 @@ public class HomeView extends StreamActivity {
 			break;
 		
 		case AppData.RayMenuConstants.QUOTE_BTN:
-			// TODO Once programmed quote page
-			Toast.makeText(HomeView.this, "position: " + item, Toast.LENGTH_SHORT).show();
+			Intent quoteIntent = new Intent(HomeView.this, QuoteView.class);
+			startActivity(quoteIntent);
 			break;
 
 		default:
