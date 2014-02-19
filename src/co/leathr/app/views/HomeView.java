@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.capricorn.RayMenu;
 
@@ -28,6 +29,8 @@ public class HomeView extends StreamActivity {
 		contextActivity = getApplicationContext();
 		
 		createArcMenu();
+		
+		streamListView = (ListView) findViewById(R.id.streamListView);
 	}
 
 	@Override
@@ -36,10 +39,10 @@ public class HomeView extends StreamActivity {
 		if (status.getErrorCode() == ConnectionResult.SUCCESS) {
 			//Get the person
 			Person person = personBuffer.get(0);
-			//User's name
-			Log.i(AppData.ViewNames.HOME_VIEW, person.getName().getGivenName() + " " + person.getName().getFamilyName());
-			//UserID
+			//User's name and userId
+			userFullName = person.getName().getGivenName() + " " + person.getName().getFamilyName();
 			userPlusID = person.getId();
+			Log.i(AppData.ViewNames.HOME_VIEW, person.getName().getGivenName() + " " + person.getName().getFamilyName());
 		}
 	}
 
