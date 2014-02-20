@@ -190,11 +190,11 @@ int string common_google_play_services_update_text 0x7f060008
 int string common_google_play_services_update_title 0x7f060007
 int string common_signin_button_text 0x7f060012
 int string common_signin_button_text_long 0x7f060013
-int string datePlaceholderText 0x7f060026
+int string datePlaceholderText 0x7f060025
 int string hello_world 0x7f06001e
 int string networkerror 0x7f06001a
-int string placeholderText 0x7f060025
-int string postBtn 0x7f060024
+int string placeholderText 0x7f060024
+int string postBtn 0x7f060026
 int string quoteEmptyToast 0x7f060021
 int string quote_hint 0x7f060022
 int string quote_source_hint 0x7f060023
