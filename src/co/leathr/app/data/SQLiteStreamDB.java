@@ -30,6 +30,8 @@ public class SQLiteStreamDB {
 	private static final String DATABASE_NAME = "streamDB";
 	private static final String DATABASE_TABLE = "streamTABLE";
 	private static final int DATABASE_VERSION = 1;
+	
+	private static final String AND = " AND ";
 		
 	//private static final String SQL_DROP_TABLE = "DROP TABLE IF EXISTS " + DATABASE_TABLE;
 	private static final String SQL_CREATE_TABLE = "CREATE TABLE " + DATABASE_TABLE + " (" + 
@@ -142,7 +144,14 @@ public class SQLiteStreamDB {
 		
 		return resultSet;
 	}
-		
+	
+	public String selectBy(String day, String month, String year) {
+		String where = KEY_TIME_DAY + "=" + "'" + day + "'" +  AND
+								+ KEY_TIME_MONTH + "=" + "'" + month + "'" + AND
+								+ KEY_TIME_YEAR + "=" + "'" + year + "'";
+		return where;
+	}
+	
 	public boolean checkForDuplicates(String thumbnailsURL) {
 		String selection = KEY_THUMBNAIL + "=" + "'" + thumbnailsURL + "'";
 		long numberOfMatches = DatabaseUtils.queryNumEntries(ourDatabase, DATABASE_TABLE, selection);

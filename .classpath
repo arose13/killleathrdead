@@ -3,10 +3,11 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AnthonyRose/Documents/AppDevelopment/LIBRARIES/JARS/prettytime-3.2.4.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/AnthonyRose/Documents/AppDevelopment/LIBRARIES/JARS/prettytime-3.2.4.Final-javadoc.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/AnthonyRose/Documents/AppDevelopment/LIBRARIES/JARS/aquery0.26.7.jar"/>
 	<classpathentry kind="con" path="com.google.gdt.eclipse.managedapis.MANAGED_API_CONTAINER/datastore-v1beta2r8lv1.16.0-rc"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="lib" path="C:/Users/AnthonyRose/Documents/AppDevelopment/LIBRARIES/JARS/prettytime-3.2.4.Final-javadoc.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

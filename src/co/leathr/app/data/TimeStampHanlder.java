@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 
 public class TimeStampHanlder {
 	
-	/* Get Unixtime Handlers */
+	/* Get UnixTime Handlers */
 	public long getCurrentUnixTime_returnLong() {
 		return(System.currentTimeMillis()/1000L);
 	}
