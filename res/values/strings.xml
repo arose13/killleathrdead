@@ -11,6 +11,8 @@
     <string name="quoteEmptyToast">You have not told us the Quote</string>
     <string name="quote_hint">Quote</string>
     <string name="quote_source_hint">Source (optional)</string>
+    <string name="placeholderText">placeholder</string>
+    <string name="datePlaceholderText">A few moments ago</string>
     
     <!-- Screen Strings -->
     <string name="postBtn">Post</string>

@@ -323,23 +323,27 @@ containing a value of this type.
         public static final int write_comment=0x7f020051;
     }
     public static final class id {
-        public static final int action_settings=0x7f050010;
+        public static final int action_settings=0x7f050014;
         public static final int commentText=0x7f050008;
-        public static final int comment_action_post=0x7f05000f;
+        public static final int comment_action_post=0x7f050013;
         public static final int control_hint=0x7f050007;
         public static final int control_layout=0x7f050006;
         public static final int hybrid=0x7f050004;
+        public static final int iconImageView=0x7f05000c;
         public static final int item_layout=0x7f050005;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
-        public static final int quoteSourceText=0x7f05000e;
-        public static final int quoteText=0x7f05000d;
+        public static final int quoteSourceText=0x7f050012;
+        public static final int quoteText=0x7f050011;
         public static final int rayMenu=0x7f05000b;
         public static final int satellite=0x7f050002;
-        public static final int signInButton=0x7f05000c;
+        public static final int signInButton=0x7f050010;
         public static final int streamContainer=0x7f050009;
         public static final int streamListView=0x7f05000a;
         public static final int terrain=0x7f050003;
+        public static final int textBottom=0x7f05000e;
+        public static final int textDate=0x7f05000f;
+        public static final int textTop=0x7f05000d;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f070000;
@@ -348,9 +352,10 @@ containing a value of this type.
         public static final int arc_menu=0x7f030000;
         public static final int comment_view=0x7f030001;
         public static final int home_view=0x7f030002;
-        public static final int login_view=0x7f030003;
-        public static final int quote_view=0x7f030004;
-        public static final int ray_menu=0x7f030005;
+        public static final int list_text=0x7f030003;
+        public static final int login_view=0x7f030004;
+        public static final int quote_view=0x7f030005;
+        public static final int ray_menu=0x7f030006;
     }
     public static final class menu {
         public static final int comment_view=0x7f0a0000;
@@ -457,8 +462,10 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
+        public static final int datePlaceholderText=0x7f060026;
         public static final int hello_world=0x7f06001e;
         public static final int networkerror=0x7f06001a;
+        public static final int placeholderText=0x7f060025;
         /**  Screen Strings 
          */
         public static final int postBtn=0x7f060024;
