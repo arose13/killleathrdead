@@ -462,13 +462,13 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
-        public static final int datePlaceholderText=0x7f060026;
+        public static final int datePlaceholderText=0x7f060025;
         public static final int hello_world=0x7f06001e;
         public static final int networkerror=0x7f06001a;
-        public static final int placeholderText=0x7f060025;
+        public static final int placeholderText=0x7f060024;
         /**  Screen Strings 
          */
-        public static final int postBtn=0x7f060024;
+        public static final int postBtn=0x7f060026;
         public static final int quoteEmptyToast=0x7f060021;
         public static final int quote_hint=0x7f060022;
         public static final int quote_source_hint=0x7f060023;
