@@ -48,7 +48,7 @@
         <activity
             android:name="co.leathr.app.views.CommentView"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateVisible" >
+            android:windowSoftInputMode="stateAlwaysVisible" >
             <intent-filter>
                 <action android:name="android.intent.action.COMMENTVIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
