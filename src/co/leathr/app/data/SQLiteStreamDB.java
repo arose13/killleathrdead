@@ -1,7 +1,13 @@
 package co.leathr.app.data;
 
+import java.util.ArrayList;
+
+import co.leathr.app.data.AppObjects.StreamObject;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -97,4 +103,56 @@ public class SQLiteStreamDB {
 		values.put(KEY_OWNER_ID, ownerID);
 		ourDatabase.insert(DATABASE_TABLE, null, values);
 	}
+	
+	public ArrayList<StreamObject> getEntries(String selectionClause) {
+		String orderBy = KEY_TIME_UNIXTIME + " DESC";
+		Cursor dbc = ourDatabase.query(DATABASE_TABLE, columns, selectionClause, null, null, null, orderBy);
+		
+		ArrayList<StreamObject> resultSet = new ArrayList<StreamObject>();
+		String currentPicDay = "";
+		String currentPicMonth = "";
+		String currentPicYear = "";
+		int iRowID = dbc.getColumnIndex(KEY_ROWID);
+		int iType = dbc.getColumnIndex(KEY_TYPE);
+		int iContent = dbc.getColumnIndex(KEY_CONTENT);
+		int iThumbnail = dbc.getColumnIndex(KEY_THUMBNAIL);
+		int iDay = dbc.getColumnIndex(KEY_TIME_DAY);
+		int iMonth = dbc.getColumnIndex(KEY_TIME_MONTH);
+		int iYear = dbc.getColumnIndex(KEY_TIME_YEAR);
+		int iUnixtime = dbc.getColumnIndex(KEY_TIME_UNIXTIME);
+		int iEmotion = dbc.getColumnIndex(KEY_EMOTION);
+		
+		for (dbc.moveToFirst(); !dbc.isAfterLast(); dbc.moveToNext()) {
+			int rowID = 0;
+			int type = 0;
+			String content = null;
+			String thumbnail = null;
+			String unixtime = null;
+			int emotion = 0;
+			ArrayList<String> photoArrayList = null;
+			
+			rowID = dbc.getInt(iRowID);
+			type = dbc.getInt(iType);
+			content = dbc.getString(iContent);
+			thumbnail = dbc.getString(iThumbnail);
+			unixtime = dbc.getString(iUnixtime);
+			emotion = dbc.getInt(iEmotion);
+			resultSet.add(new StreamObject(rowID, type, content, thumbnail, unixtime, emotion, photoArrayList));
+		}
+		
+		return resultSet;
+	}
+		
+	public boolean checkForDuplicates(String thumbnailsURL) {
+		String selection = KEY_THUMBNAIL + "=" + "'" + thumbnailsURL + "'";
+		long numberOfMatches = DatabaseUtils.queryNumEntries(ourDatabase, DATABASE_TABLE, selection);
+		if (numberOfMatches > 0) {
+			/* Yes duplicates exists */
+			return true;
+		} else {
+			/* No duplicates found */
+			return false;
+		}
+	}	
+	
 }
