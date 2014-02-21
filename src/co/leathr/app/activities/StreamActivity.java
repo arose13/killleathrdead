@@ -85,25 +85,39 @@ public abstract class StreamActivity extends BaseActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
+			StreamViewHolder holder = new StreamViewHolder();
 			convertView = null;
 			prettyTime = new PrettyTime();
-			StreamViewHolder holder = new StreamViewHolder();
 			photoImageOptions.fileCache = true;
 			photoImageOptions.memCache = true;
 			photoImageOptions.animation = AQuery.FADE_IN;
 			
-			if (convertView == null) {
+			if (convertView == null) {				
+				/* Which type of card to use for the data */
 				switch (streamArrayList.get(position).type) {
 				case AppData.DBConstants.TypeOfContent.TEXT:
+					/* Setting up text card elements the textBottom is not used in this card */
 					convertView = getLayoutInflater().inflate(R.layout.list_text, parent, false);
 					holder.commentContent = (TextView) convertView.findViewById(R.id.textTop);
 					holder.commentDate = (TextView) convertView.findViewById(R.id.textDate);
+					convertView.setTag(holder);
 					break;
 				
 				case AppData.DBConstants.TypeOfContent.QUOTE:
+					/* Setting up quote card elements textBottom is made visible */
+					convertView = getLayoutInflater().inflate(R.layout.list_text, parent, false);
+					holder.quoteContent = (TextView) convertView.findViewById(R.id.textTop);
+					holder.quoteSource = (TextView) convertView.findViewById(R.id.textBottom);
+					holder.quoteSource.setVisibility(View.VISIBLE);
+					convertView.setTag(holder);
 					break;
 				
 				case AppData.DBConstants.TypeOfContent.LINK:
+					/* Setting up link card elements the textBottom is not used in this card */
+					convertView = getLayoutInflater().inflate(R.layout.list_text, parent, false);
+					holder.linkContent = (TextView) convertView.findViewById(R.id.textTop);
+					holder.linkDate = (TextView) convertView.findViewById(R.id.textDate);
+					convertView.setTag(holder);
 					break;
 					
 				case AppData.DBConstants.TypeOfContent.PICTURE:
@@ -115,17 +129,29 @@ public abstract class StreamActivity extends BaseActivity {
 			}
 			
 			switch (streamArrayList.get(position).type) {
+			
 			case AppData.DBConstants.TypeOfContent.TEXT:
-				long unixTime = Long.parseLong( streamArrayList.get(position).unixtime );
+				long unixtimeText = Long.parseLong(streamArrayList.get(position).unixtime);
 				holder.commentContent.setText(streamArrayList.get(position).content);
 				typeFaceConstructor(holder.commentContent, AppData.Fonts.Roboto.LIGHT);
-				holder.commentDate.setText( prettyTime.format(new Date(unixTime*1000)) );
+				holder.commentDate.setText( prettyTime.format(new Date(unixtimeText*1000)) );
+				//TODO Modify text size
 				break;
 				
 			case AppData.DBConstants.TypeOfContent.QUOTE:
+				long unixtimeQuote = Long.parseLong(streamArrayList.get(position).unixtime);
+				holder.quoteContent.setText(streamArrayList.get(position).content);
+				holder.quoteSource.setText("-" + streamArrayList.get(position).thumbnail);
+				typeFaceConstructor(holder.quoteContent, AppData.Fonts.Roboto.LIGHT);
+				typeFaceConstructor(holder.quoteSource, AppData.Fonts.Roboto.REGULAR);
+				holder.quoteDate.setText(prettyTime.format(new Date(unixtimeQuote*1000)));
 				break;
 				
 			case AppData.DBConstants.TypeOfContent.LINK:
+				long unixtimeLink = Long.parseLong( streamArrayList.get(position).unixtime );
+				holder.linkContent.setText(streamArrayList.get(position).content);
+				typeFaceConstructor(holder.linkContent, AppData.Fonts.Roboto.LIGHT);
+				holder.linkDate.setText( prettyTime.format(new Date(unixtimeLink*1000)) );
 				break;
 				
 			case AppData.DBConstants.TypeOfContent.PICTURE:
@@ -135,7 +161,7 @@ public abstract class StreamActivity extends BaseActivity {
 				break;
 			}
 			
-			return null;
+			return convertView;
 		}
 		
 	}
