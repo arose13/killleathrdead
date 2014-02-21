@@ -128,8 +128,7 @@ public abstract class StreamActivity extends BaseActivity {
 				}
 			}
 			
-			switch (streamArrayList.get(position).type) {
-			
+			switch (streamArrayList.get(position).type) {			
 			case AppData.DBConstants.TypeOfContent.TEXT:
 				long unixtimeText = Long.parseLong(streamArrayList.get(position).unixtime);
 				holder.commentContent.setText(streamArrayList.get(position).content);
