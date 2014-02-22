@@ -29,9 +29,14 @@ public class HomeView extends StreamActivity {
 		setContentView(R.layout.home_view);
 		contextActivity = getApplicationContext();
 		
+		/* Start ArcMenu */
 		createArcMenu();
 		
 		/* Start ListView for the stream */
+		streamListView();
+	}
+
+	private void streamListView() {
 		streamListView = (ListView) findViewById(R.id.streamListView);
 		listAdapter = new StreamAdapter();
 		streamListView.setAdapter(listAdapter);
