@@ -26,16 +26,18 @@ public abstract class StreamActivity extends BaseActivity {
 	protected String userFullName;
 	
 	protected ListView streamListView;
-	protected SQLiteStreamDB sqlStream;
 	protected AQuery aq;
-	protected ImageOptions photoImageOptions;
 	protected PrettyTime prettyTime;
+	
+	/* Stream Methods */
 	
 	/* ViewHolder hold all the views accessible 
 	 * for the StreamAdapter */
 	public static class StreamViewHolder {
 		
-		//text card views
+		public ImageView textIcon;
+		
+		//comment card views
 		public TextView commentDate;
 		public TextView commentContent;
 		public ImageView commentEmotion;
@@ -60,13 +62,24 @@ public abstract class StreamActivity extends BaseActivity {
 	public class StreamAdapter extends BaseAdapter {
 		
 		TimeStampHanlder stampHandler = new TimeStampHanlder();
+		SQLiteStreamDB streamDB = new SQLiteStreamDB(getApplicationContext());
 		long currentUnixtimeLong = (System.currentTimeMillis())/1000;
 		String currentDay = stampHandler.getDay(currentUnixtimeLong);
 		String currentMonth = stampHandler.getMonth(currentUnixtimeLong);
 		String currentYear = stampHandler.getYear(currentUnixtimeLong);
-		String selectionClause = sqlStream.selectBy(currentDay, currentMonth, currentYear); 
-		ArrayList<StreamObject> streamArrayList = sqlStream.getEntries(selectionClause);
+		String selectionClause = streamDB.selectBy(currentMonth, currentYear); 
+		ArrayList<StreamObject> streamArrayList = getStreamObjectList(selectionClause);
 		
+		/* Custom methods required by the streamAdapter */
+		private ArrayList<StreamObject> getStreamObjectList(String selectionClause) {
+			ArrayList<StreamObject> streamObjectList = new ArrayList<StreamObject>();
+			streamDB.open();
+			streamObjectList.addAll( streamDB.getEntries(selectionClause) );
+			streamDB.close();
+			return streamObjectList;
+		}
+		
+		/* getCount() getItem() getItemId() getView() are required methods from the BaseAdapter */
 		@Override
 		public int getCount() {
 			return streamArrayList.size();
@@ -85,7 +98,10 @@ public abstract class StreamActivity extends BaseActivity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			
+			// Key custom class instantiations
 			StreamViewHolder holder = new StreamViewHolder();
+			ImageOptions photoImageOptions = new ImageOptions();
+			
 			convertView = null;
 			prettyTime = new PrettyTime();
 			photoImageOptions.fileCache = true;
@@ -144,6 +160,7 @@ public abstract class StreamActivity extends BaseActivity {
 				typeFaceConstructor(holder.quoteContent, AppData.Fonts.Roboto.LIGHT);
 				typeFaceConstructor(holder.quoteSource, AppData.Fonts.Roboto.REGULAR);
 				holder.quoteDate.setText(prettyTime.format(new Date(unixtimeQuote*1000)));
+				aq.id(holder.textIcon).image(R.drawable.type_leathr_quote_icon);
 				break;
 				
 			case AppData.DBConstants.TypeOfContent.LINK:
@@ -151,6 +168,7 @@ public abstract class StreamActivity extends BaseActivity {
 				holder.linkContent.setText(streamArrayList.get(position).content);
 				typeFaceConstructor(holder.linkContent, AppData.Fonts.Roboto.LIGHT);
 				holder.linkDate.setText( prettyTime.format(new Date(unixtimeLink*1000)) );
+				aq.id(holder.textIcon).image(R.drawable.type_leathr_link_icon);
 				break;
 				
 			case AppData.DBConstants.TypeOfContent.PICTURE:

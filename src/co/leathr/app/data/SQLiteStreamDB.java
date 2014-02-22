@@ -152,6 +152,12 @@ public class SQLiteStreamDB {
 		return where;
 	}
 	
+	public String selectBy(String month, String year) {
+		String where = KEY_TIME_MONTH + "=" + "'" + month + "'" + AND
+								+ KEY_TIME_YEAR + "=" + "'" + year + "'";
+		return where;
+	}
+	
 	public boolean checkForDuplicates(String thumbnailsURL) {
 		String selection = KEY_THUMBNAIL + "=" + "'" + thumbnailsURL + "'";
 		long numberOfMatches = DatabaseUtils.queryNumEntries(ourDatabase, DATABASE_TABLE, selection);

@@ -20,7 +20,8 @@ import co.leathr.app.data.AppData;
 
 public class HomeView extends StreamActivity {
 	
-	RayMenu rayMenu;
+	private RayMenu rayMenu;
+	private StreamAdapter listAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,10 @@ public class HomeView extends StreamActivity {
 		
 		createArcMenu();
 		
+		/* Start ListView for the stream */
 		streamListView = (ListView) findViewById(R.id.streamListView);
+		listAdapter = new StreamAdapter();
+		streamListView.setAdapter(listAdapter);
 	}
 
 	@Override
