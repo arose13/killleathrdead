@@ -4,10 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingBottom="@dimen/margin_sm"
-    android:paddingLeft="@dimen/margin"
-    android:paddingRight="@dimen/margin"
-    android:paddingTop="@dimen/margin_sm"
+    android:padding="@dimen/margin_med"
     tools:ignore="ContentDescription" >
 
     <ImageView

@@ -24,9 +24,9 @@ public final class R {
 		public static final int ic_leathr_icon_add_spinner_v2 = 0x7f020032;
 	}
 	public static final class id {
-		public static final int control_hint = 0x7f050007;
-		public static final int control_layout = 0x7f050006;
-		public static final int item_layout = 0x7f050005;
+		public static final int control_hint = 0x7f060007;
+		public static final int control_layout = 0x7f060006;
+		public static final int item_layout = 0x7f060005;
 	}
 	public static final class layout {
 		public static final int arc_menu = 0x7f030000;
