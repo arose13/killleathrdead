@@ -1,6 +1,5 @@
 package co.leathr.app.data;
 
-import co.leathr.app.R;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
