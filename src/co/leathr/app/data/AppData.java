@@ -119,6 +119,8 @@ public class AppData {
 	public final static class ViewNames {
 		public static final String LOGIN_VIEW = "loginView";
 		public static final String HOME_VIEW = "homeView";
+		public static final String COMMENT_VIEW = "commentView";
+		public static final String QUOTE_VIEW = "quoteView";
 	}
 	
 }
