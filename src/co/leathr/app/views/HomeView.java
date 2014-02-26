@@ -83,22 +83,18 @@ public class HomeView extends StreamActivity {
 		case AppData.RayMenuConstants.COMMENT_BTN:
 			Intent commentIntent = new Intent(HomeView.this, CommentView.class);
 			startActivity(commentIntent);
-			activityTransitionAnimation();
+			activityTransitionAnimation_bottomUp();
 			break;
 		
 		case AppData.RayMenuConstants.QUOTE_BTN:
 			Intent quoteIntent = new Intent(HomeView.this, QuoteView.class);
 			startActivity(quoteIntent);
-			activityTransitionAnimation();
+			activityTransitionAnimation_bottomUp();
 			break;
 
 		default:
 			break;
 		}
 	}
-
-	private void activityTransitionAnimation() {
-		overridePendingTransition(R.anim.activity_bottomup_enter, R.anim.activity_bottomup_exit);
-	}
-	
+		
 }

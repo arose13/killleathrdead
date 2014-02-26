@@ -113,5 +113,10 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 			userPlusID = mPlusPerson.getId();
 		}
 	}
+	
+	/* Activity Animation */
+	protected void activityTransitionAnimation_bottomUp() {
+		overridePendingTransition(R.anim.activity_bottomup_enter, R.anim.activity_bottomup_exit);
+	}
 
 }

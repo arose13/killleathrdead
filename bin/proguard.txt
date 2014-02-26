@@ -16,7 +16,7 @@
 # view res/layout/ray_menu.xml #generated:5
 -keep class com.capricorn.RayLayout { <init>(...); }
 
-# view res/layout/home_view.xml #generated:25
+# view res/layout/home_view.xml #generated:24
 -keep class com.capricorn.RayMenu { <init>(...); }
 
 # view res/layout/login_view.xml #generated:6
