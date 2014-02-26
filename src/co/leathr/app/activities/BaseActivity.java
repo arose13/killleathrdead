@@ -3,6 +3,7 @@ package co.leathr.app.activities;
 import co.leathr.app.R;
 import co.leathr.app.data.AppData;
 
+import com.androidquery.AQuery;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
@@ -30,12 +31,14 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 	protected Person mPlusPerson;
 	protected ProgressDialog mConnectionProgressDialog;
 	protected ConnectionResult mConnectionResult;
+	protected AQuery aq;
 	
 	protected String userPlusID;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		aq = new AQuery(this);
 		mPlusClient = new PlusClient.Builder(this, this, this)
 			.setScopes(AppData.GPLusConstants.SCOPES)
 			.setActions(AppData.GPLusConstants.VISABLE_ACTIVITIES)

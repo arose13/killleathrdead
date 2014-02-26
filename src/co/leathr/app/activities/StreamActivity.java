@@ -26,7 +26,6 @@ public abstract class StreamActivity extends BaseActivity {
 	protected String userFullName;
 	
 	protected ListView streamListView;
-	protected AQuery aq;
 	protected PrettyTime prettyTime;
 	
 	/* Stream Methods */
@@ -114,6 +113,7 @@ public abstract class StreamActivity extends BaseActivity {
 				case AppData.DBConstants.TypeOfContent.TEXT:
 					/* Setting up text card elements the textBottom is not used in this card */
 					convertView = getLayoutInflater().inflate(R.layout.list_text, parent, false);
+					//Default Icon is the Text Icon
 					holder.commentContent = (TextView) convertView.findViewById(R.id.textTop);
 					holder.commentDate = (TextView) convertView.findViewById(R.id.textDate);
 					convertView.setTag(holder);
@@ -122,15 +122,18 @@ public abstract class StreamActivity extends BaseActivity {
 				case AppData.DBConstants.TypeOfContent.QUOTE:
 					/* Setting up quote card elements textBottom is made visible */
 					convertView = getLayoutInflater().inflate(R.layout.list_text, parent, false);
+					holder.textIcon = (ImageView) convertView.findViewById(R.id.textIcon);
 					holder.quoteContent = (TextView) convertView.findViewById(R.id.textTop);
 					holder.quoteSource = (TextView) convertView.findViewById(R.id.textBottom);
 					holder.quoteSource.setVisibility(View.VISIBLE);
+					holder.quoteDate = (TextView) convertView.findViewById(R.id.textDate);
 					convertView.setTag(holder);
 					break;
 				
 				case AppData.DBConstants.TypeOfContent.LINK:
 					/* Setting up link card elements the textBottom is not used in this card */
 					convertView = getLayoutInflater().inflate(R.layout.list_text, parent, false);
+					holder.textIcon = (ImageView) convertView.findViewById(R.id.textIcon);
 					holder.linkContent = (TextView) convertView.findViewById(R.id.textTop);
 					holder.linkDate = (TextView) convertView.findViewById(R.id.textDate);
 					convertView.setTag(holder);
