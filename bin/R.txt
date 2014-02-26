@@ -1,5 +1,6 @@
 int anim activity_bottomup_enter 0x7f040000
 int anim activity_bottomup_exit 0x7f040001
+int anim button_click 0x7f040002
 int attr adSize 0x7f010000
 int attr adSizes 0x7f010001
 int attr adUnitId 0x7f010002

@@ -82,13 +82,13 @@ public class HomeView extends StreamActivity {
 			
 		case AppData.RayMenuConstants.COMMENT_BTN:
 			Intent commentIntent = new Intent(HomeView.this, CommentView.class);
-			startActivity(commentIntent);
+			gotoView(commentIntent);
 			activityTransitionAnimation_bottomUp();
 			break;
 		
 		case AppData.RayMenuConstants.QUOTE_BTN:
 			Intent quoteIntent = new Intent(HomeView.this, QuoteView.class);
-			startActivity(quoteIntent);
+			gotoView(quoteIntent);
 			activityTransitionAnimation_bottomUp();
 			break;
 

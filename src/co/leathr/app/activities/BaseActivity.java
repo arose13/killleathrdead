@@ -2,7 +2,6 @@ package co.leathr.app.activities;
 
 import co.leathr.app.R;
 import co.leathr.app.data.AppData;
-import co.leathr.app.views.HomeView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
@@ -20,6 +19,8 @@ import android.content.IntentSender.SendIntentException;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public abstract class BaseActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, OnPeopleLoadedListener {
@@ -102,9 +103,8 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 		textView.setTypeface(customTypeface);
 	}
 	
-	protected void gotoHomeView(Context classDotThis) {
-		Intent homeViewIntent = new Intent(classDotThis, HomeView.class);
-		startActivity(homeViewIntent);
+	protected void gotoView(Intent viewIntent) {
+		startActivity(viewIntent);
 	}
 	
 	public void assignUserID(ConnectionResult status, PersonBuffer personBuffer) {
@@ -117,6 +117,14 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 	/* Activity Animation */
 	protected void activityTransitionAnimation_bottomUp() {
 		overridePendingTransition(R.anim.activity_bottomup_enter, R.anim.activity_bottomup_exit);
+	}
+	
+	public class AnimationImplementor {
+		
+		public void animationStarter(View view, int animationId) {
+			view.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), animationId));
+		}		
+		
 	}
 
 }
