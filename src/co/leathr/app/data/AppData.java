@@ -116,6 +116,10 @@ public class AppData {
 		public static final int QUOTE_BTN = 2;
 	}
 	
+	public static class MimiTypes {
+		public static final String TEXT_PLAIN = "text/plain";
+	}
+	
 	public final static class ViewNames {
 		public static final String LOGIN_VIEW = "loginView";
 		public static final String HOME_VIEW = "homeView";
