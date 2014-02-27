@@ -7,7 +7,7 @@
 # view AndroidManifest.xml #generated:28
 -keep class co.leathr.app.views.LoginView { <init>(...); }
 
-# view AndroidManifest.xml #generated:58
+# view AndroidManifest.xml #generated:63
 -keep class co.leathr.app.views.QuoteView { <init>(...); }
 
 # view res/layout/arc_menu.xml #generated:7
