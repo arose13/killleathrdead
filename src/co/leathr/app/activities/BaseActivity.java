@@ -122,6 +122,10 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 		overridePendingTransition(R.anim.activity_bottomup_enter, R.anim.activity_bottomup_exit);
 	}
 	
+	protected void activityTransitionAnimation_fromRight() {
+		overridePendingTransition(R.anim.activity_fromright_enter, R.anim.activity_nomotion);
+	}
+	
 	public class AnimationImplementor {
 		
 		public void animationStarter(View view, int animationId) {

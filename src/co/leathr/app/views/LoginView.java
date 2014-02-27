@@ -68,6 +68,7 @@ public class LoginView extends BaseActivity implements OnClickListener {
 			//Get Picasa Token via async task!
 			Intent homeViewIntent = new Intent(LoginView.this, HomeView.class);
 			gotoView(homeViewIntent);
+			activityTransitionAnimation_fromRight();
 		} else if (status.getErrorCode() == ConnectionResult.NETWORK_ERROR) {
 			Toast.makeText(this, R.string.networkerror, Toast.LENGTH_SHORT).show();
 		}
