@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.capricorn.ArcMenu;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.plus.model.people.Person;
 import com.google.android.gms.plus.model.people.PersonBuffer;
