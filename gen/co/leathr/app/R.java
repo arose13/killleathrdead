@@ -331,6 +331,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int action_settings=0x7f060017;
+        public static final int arcMenu=0x7f06000b;
         public static final int commentText=0x7f060008;
         public static final int comment_action_post=0x7f060016;
         public static final int control_hint=0x7f060007;
@@ -344,7 +345,6 @@ containing a value of this type.
         public static final int normal=0x7f060001;
         public static final int quoteSourceText=0x7f060015;
         public static final int quoteText=0x7f060014;
-        public static final int rayMenu=0x7f06000b;
         public static final int satellite=0x7f060002;
         public static final int signInButton=0x7f060013;
         public static final int streamContainer=0x7f060009;

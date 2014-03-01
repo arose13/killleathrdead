@@ -135,6 +135,7 @@ int drawable type_leathr_location_icon 0x7f02004f
 int drawable type_leathr_quote_icon 0x7f020050
 int drawable write_comment 0x7f020051
 int id action_settings 0x7f060017
+int id arcMenu 0x7f06000b
 int id commentText 0x7f060008
 int id comment_action_post 0x7f060016
 int id control_hint 0x7f060007
@@ -148,7 +149,6 @@ int id none 0x7f060000
 int id normal 0x7f060001
 int id quoteSourceText 0x7f060015
 int id quoteText 0x7f060014
-int id rayMenu 0x7f06000b
 int id satellite 0x7f060002
 int id signInButton 0x7f060013
 int id streamContainer 0x7f060009

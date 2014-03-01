@@ -8,8 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.capricorn.RayMenu;
-
+import com.capricorn.ArcMenu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.plus.model.people.Person;
 import com.google.android.gms.plus.model.people.PersonBuffer;
@@ -20,7 +19,8 @@ import co.leathr.app.data.AppData;
 
 public class HomeView extends StreamActivity {
 	
-	private RayMenu rayMenu;
+	//private RayMenu rayMenu;
+	private ArcMenu arcMenu;
 	private StreamAdapter listAdapter;
 	
 	@Override
@@ -56,12 +56,12 @@ public class HomeView extends StreamActivity {
 	}
 
 	private void createArcMenu() {
-		rayMenu = (RayMenu) findViewById(R.id.rayMenu);
+		arcMenu = (ArcMenu) findViewById(R.id.arcMenu);
 		for (int i = 0; i < AppData.RayMenuConstants.ITEM_DRAWABLES.length; i++) {
 			ImageView item = new ImageView(this);
 			item.setImageResource(AppData.RayMenuConstants.ITEM_DRAWABLES[i]);
 			final int position = i;
-			rayMenu.addItem(item, new OnClickListener() {
+			arcMenu.addItem(item, new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {

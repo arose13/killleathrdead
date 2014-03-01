@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="ContentDescription" >
+    tools:ignore="ContentDescription" xmlns:app="http://schemas.android.com/apk/res/co.leathr.app">
         
     <LinearLayout
 	    android:id="@+id/streamContainer"
@@ -20,14 +20,15 @@
 		    android:layout_weight="1" />
             
     </LinearLayout>
-    
-    <com.capricorn.RayMenu
-        android:id="@+id/rayMenu"
+        
+    <com.capricorn.ArcMenu
+        android:id="@+id/arcMenu"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_med"
-        android:layout_marginBottom="@dimen/margin_med"
-        android:layout_marginRight="@dimen/margin_med"
-        android:layout_alignBottom="@+id/streamContainer" />        
+        android:layout_margin="@dimen/margin_med"
+        android:layout_alignBottom="@+id/streamContainer"
+        android:layout_centerHorizontal="true"
+        app:fromDegrees="-179"
+        app:toDegrees="-1" />       
     
 </RelativeLayout>
