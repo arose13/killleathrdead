@@ -47,7 +47,8 @@
         
         <activity
             android:name="co.leathr.app.views.CommentView"
-            android:label="@string/app_name"
+            android:label="@string/app_commentView"
+            android:theme="@style/Theme.Leathr"
             android:windowSoftInputMode="stateAlwaysVisible" >
             <intent-filter>
                 <action android:name="android.intent.action.COMMENTVIEW" />
@@ -62,7 +63,8 @@
         
         <activity
             android:name="co.leathr.app.views.QuoteView"
-            android:label="@string/app_name"
+            android:label="@string/app_quoteView"
+            android:theme="@style/Theme.Leathr"
             android:windowSoftInputMode="stateAlwaysVisible" >
             <intent-filter>
                 <action android:name="android.intent.action.QUOTEVIEW"/>

@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">Leathr</string>
+    <string name="app_commentView">Thought</string>
+    <string name="app_quoteView">Quote</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     
