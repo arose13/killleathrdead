@@ -25,7 +25,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/placeholderText"
-            android:autoLink="web|email|phone"
+            android:autoLink="web|email"
             android:textSize="@dimen/textSize" />
 
         <TextView
