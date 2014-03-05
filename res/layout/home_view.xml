@@ -2,10 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:arc="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/co.leathr.app"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="ContentDescription" xmlns:app="http://schemas.android.com/apk/res/co.leathr.app">
+    android:background="@android:color/white"
+    tools:ignore="ContentDescription">
         
     <LinearLayout
 	    android:id="@+id/streamContainer"
