@@ -8,9 +8,9 @@
     
     <!-- TextSize -->
     <dimen name="textSize_small">14sp</dimen>
-    <dimen name="textSize">16sp</dimen>
+    <dimen name="textSize">18sp</dimen>
     <dimen name="textSize_med">20sp</dimen>
-    <dimen name="textSize_lg">24sp</dimen>
+    <dimen name="textSize_lg">26sp</dimen>
     
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>

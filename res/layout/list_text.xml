@@ -24,13 +24,16 @@
             android:id="@+id/textTop"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/placeholderText" />
+            android:text="@string/placeholderText"
+            android:autoLink="web|email|phone"
+            android:textSize="@dimen/textSize" />
 
         <TextView
             android:id="@+id/textBottom"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/placeholderText"
+            android:textSize="@dimen/textSize"
             android:visibility="gone" />
 
         <TextView
@@ -39,7 +42,8 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:text="@string/datePlaceholderText"
-            android:textColor="@android:color/darker_gray" />
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/textSize_small" />
         
     </LinearLayout>
 
