@@ -13,12 +13,12 @@
 # view res/layout/arc_menu.xml #generated:7
 -keep class com.capricorn.ArcLayout { <init>(...); }
 
-# view res/layout/home_view.xml #generated:24
+# view res/layout/home_view.xml #generated:26
 -keep class com.capricorn.ArcMenu { <init>(...); }
 
 # view res/layout/ray_menu.xml #generated:5
 -keep class com.capricorn.RayLayout { <init>(...); }
 
-# view res/layout/login_view.xml #generated:6
+# view res/layout/login_view.xml #generated:36
 -keep class com.google.android.gms.common.SignInButton { <init>(...); }
 

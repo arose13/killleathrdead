@@ -230,20 +230,21 @@ containing a value of this type.
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f090008;
-        public static final int activity_vertical_margin=0x7f090009;
+        public static final int activity_horizontal_margin=0x7f090009;
+        public static final int activity_vertical_margin=0x7f09000a;
         public static final int margin=0x7f090001;
         public static final int margin_lg=0x7f090003;
         public static final int margin_med=0x7f090002;
         /**  Screen Dimens 
          */
         public static final int margin_sm=0x7f090000;
-        public static final int textSize=0x7f090005;
-        public static final int textSize_lg=0x7f090007;
-        public static final int textSize_med=0x7f090006;
+        public static final int margin_vlg=0x7f090004;
+        public static final int textSize=0x7f090006;
+        public static final int textSize_lg=0x7f090008;
+        public static final int textSize_med=0x7f090007;
         /**  TextSize 
          */
-        public static final int textSize_small=0x7f090004;
+        public static final int textSize_small=0x7f090005;
     }
     public static final class drawable {
         public static final int ab_background_textured_leathr=0x7f020000;
@@ -344,28 +345,31 @@ containing a value of this type.
         public static final int spinner_ab_focused_leathr=0x7f02005f;
         public static final int spinner_ab_pressed_leathr=0x7f020060;
         public static final int spinner_background_ab_leathr=0x7f020061;
-        public static final int tab_indicator_ab_leathr=0x7f020062;
-        public static final int tab_selected_focused_leathr=0x7f020063;
-        public static final int tab_selected_leathr=0x7f020064;
-        public static final int tab_selected_pressed_leathr=0x7f020065;
-        public static final int tab_unselected_focused_leathr=0x7f020066;
-        public static final int tab_unselected_leathr=0x7f020067;
-        public static final int tab_unselected_pressed_leathr=0x7f020068;
-        public static final int test_image=0x7f020069;
-        public static final int test_image_2=0x7f02006a;
-        public static final int test_image_3=0x7f02006b;
-        public static final int type_leathr_comment_icon=0x7f02006c;
-        public static final int type_leathr_image_icon=0x7f02006d;
-        public static final int type_leathr_link_icon=0x7f02006e;
-        public static final int type_leathr_location_icon=0x7f02006f;
-        public static final int type_leathr_quote_icon=0x7f020070;
-        public static final int write_comment=0x7f020071;
+        public static final int splash_clouds=0x7f020062;
+        public static final int splash_grass=0x7f020063;
+        public static final int splash_plane=0x7f020064;
+        public static final int tab_indicator_ab_leathr=0x7f020065;
+        public static final int tab_selected_focused_leathr=0x7f020066;
+        public static final int tab_selected_leathr=0x7f020067;
+        public static final int tab_selected_pressed_leathr=0x7f020068;
+        public static final int tab_unselected_focused_leathr=0x7f020069;
+        public static final int tab_unselected_leathr=0x7f02006a;
+        public static final int tab_unselected_pressed_leathr=0x7f02006b;
+        public static final int test_image=0x7f02006c;
+        public static final int test_image_2=0x7f02006d;
+        public static final int test_image_3=0x7f02006e;
+        public static final int type_leathr_comment_icon=0x7f02006f;
+        public static final int type_leathr_image_icon=0x7f020070;
+        public static final int type_leathr_link_icon=0x7f020071;
+        public static final int type_leathr_location_icon=0x7f020072;
+        public static final int type_leathr_quote_icon=0x7f020073;
+        public static final int write_comment=0x7f020074;
     }
     public static final class id {
-        public static final int action_settings=0x7f060017;
+        public static final int action_settings=0x7f060018;
         public static final int arcMenu=0x7f06000b;
         public static final int commentText=0x7f060008;
-        public static final int comment_action_post=0x7f060016;
+        public static final int comment_action_post=0x7f060017;
         public static final int control_hint=0x7f060007;
         public static final int control_layout=0x7f060006;
         public static final int hybrid=0x7f060004;
@@ -373,12 +377,13 @@ containing a value of this type.
         public static final int imageSimple=0x7f06000c;
         public static final int imageTime=0x7f06000e;
         public static final int item_layout=0x7f060005;
+        public static final int leathrTitleTextView=0x7f060013;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
-        public static final int quoteSourceText=0x7f060015;
-        public static final int quoteText=0x7f060014;
+        public static final int quoteSourceText=0x7f060016;
+        public static final int quoteText=0x7f060015;
         public static final int satellite=0x7f060002;
-        public static final int signInButton=0x7f060013;
+        public static final int signInButton=0x7f060014;
         public static final int streamContainer=0x7f060009;
         public static final int streamListView=0x7f06000a;
         public static final int terrain=0x7f060003;
@@ -394,7 +399,7 @@ containing a value of this type.
         public static final int arc_menu=0x7f030000;
         public static final int comment_view=0x7f030001;
         public static final int home_view=0x7f030002;
-        public static final int list_singleimage=0x7f030003;
+        public static final int list_image_1=0x7f030003;
         public static final int list_text=0x7f030004;
         public static final int login_view=0x7f030005;
         public static final int quote_view=0x7f030006;

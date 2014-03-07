@@ -5,6 +5,7 @@
     <dimen name="margin">8dp</dimen>
     <dimen name="margin_med">16dp</dimen>
     <dimen name="margin_lg">32dp</dimen>
+    <dimen name="margin_vlg">48dp</dimen>
     
     <!-- TextSize -->
     <dimen name="textSize_small">14sp</dimen>

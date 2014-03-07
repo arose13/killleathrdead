@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/signInButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp" />    
+    android:layout_height="match_parent"
+    android:background="@color/background_DarkGrey"
+    tools:ignore="ContentDescription" >
 
-</RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_grass" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+        <TextView
+            android:id="@+id/leathrTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:paddingTop="@dimen/margin_vlg"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="1"
+            android:shadowDy="8"
+            android:shadowRadius="6"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="96dp"
+            tools:ignore="SpUsage" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/signInButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="@dimen/margin_vlg" />
+        
+    </RelativeLayout>
+
+</FrameLayout>
