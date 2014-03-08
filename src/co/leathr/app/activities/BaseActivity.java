@@ -2,6 +2,7 @@ package co.leathr.app.activities;
 
 import co.leathr.app.R;
 import co.leathr.app.data.AppData;
+import co.leathr.app.data.AppData.Fonts;
 
 import com.androidquery.AQuery;
 import com.google.android.gms.common.ConnectionResult;
@@ -17,14 +18,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
 
 public abstract class BaseActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, OnPeopleLoadedListener {
+	
+	protected AppData.Fonts mFont = new Fonts();
 	
 	protected Context contextActivity;
 	protected PlusClient mPlusClient;
@@ -101,11 +102,6 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 	}
 	
 	/* Custom Methods */
-	protected void typeFaceConstructor(TextView textView, String fontPath) {
-		Typeface customTypeface = Typeface.createFromAsset(getAssets(), fontPath);
-		textView.setTypeface(customTypeface);
-	}
-	
 	protected void gotoView(Intent viewIntent) {
 		startActivity(viewIntent);
 	}

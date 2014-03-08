@@ -1,5 +1,8 @@
 package co.leathr.app.data;
 
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
+import android.widget.TextView;
 import co.leathr.app.R;
 
 import com.google.android.gms.common.Scopes;
@@ -71,6 +74,12 @@ public class AppData {
 			public static final String THIN = FRONT + ROBOTOGROUP + "Thin" + BACK;
 			public static final String LIGHT = FRONT + ROBOTOGROUP + "Light" + BACK;
 			public static final String REGULAR = FRONT + ROBOTOGROUP + "Regular" + BACK;
+		}
+		
+		/* Typeface constructor */
+		public void typeFaceConstructor(TextView textView, String fontPath, AssetManager assets) {
+			Typeface customTypeface = Typeface.createFromAsset(assets, fontPath);
+			textView.setTypeface(customTypeface);
 		}
 		
 		/* Detects whether the font size should be modified to a larger one */

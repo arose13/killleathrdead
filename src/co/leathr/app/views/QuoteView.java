@@ -12,6 +12,7 @@ import com.google.android.gms.plus.model.people.PersonBuffer;
 import co.leathr.app.R;
 import co.leathr.app.activities.BaseActivity;
 import co.leathr.app.data.AppData;
+import co.leathr.app.data.AppData.Fonts.Roboto;
 import co.leathr.app.data.SQLiteStreamDB;
 import co.leathr.app.data.TimeStampHanlder;
 
@@ -57,8 +58,8 @@ public class QuoteView extends BaseActivity {
 	private void initViews() {
 		quoteEditText = (EditText) findViewById(R.id.quoteText);
 		quoteSourceEditText = (EditText) findViewById(R.id.quoteSourceText);
-		typeFaceConstructor(quoteEditText, AppData.Fonts.Roboto.REGULAR);
-		typeFaceConstructor(quoteSourceEditText, AppData.Fonts.Roboto.REGULAR);
+		mFont.typeFaceConstructor(quoteEditText, Roboto.REGULAR, getAssets());
+		mFont.typeFaceConstructor(quoteSourceEditText, Roboto.REGULAR, getAssets());
 	}
 	
 	@Override

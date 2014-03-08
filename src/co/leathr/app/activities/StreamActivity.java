@@ -6,6 +6,7 @@ import java.util.Date;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import co.leathr.app.R;
+import co.leathr.app.data.AppData.Fonts.Roboto;
 import co.leathr.app.data.AppObjects.StreamObject;
 import co.leathr.app.data.AppData;
 import co.leathr.app.data.SQLiteStreamDB;
@@ -151,7 +152,7 @@ public abstract class StreamActivity extends BaseActivity {
 			case AppData.DBConstants.TypeOfContent.TEXT:
 				long unixtimeText = Long.parseLong(streamArrayList.get(position).unixtime);
 				holder.commentContent.setText(streamArrayList.get(position).content);
-				typeFaceConstructor(holder.commentContent, AppData.Fonts.Roboto.LIGHT);
+				mFont.typeFaceConstructor(holder.commentContent, Roboto.LIGHT, getAssets());
 				holder.commentDate.setText( prettyTime.format(new Date(unixtimeText*1000)) );
 				//TODO Modify text size
 				break;
@@ -160,8 +161,8 @@ public abstract class StreamActivity extends BaseActivity {
 				long unixtimeQuote = Long.parseLong(streamArrayList.get(position).unixtime);
 				holder.quoteContent.setText(streamArrayList.get(position).content);
 				holder.quoteSource.setText("-" + streamArrayList.get(position).thumbnail);
-				typeFaceConstructor(holder.quoteContent, AppData.Fonts.Roboto.LIGHT);
-				typeFaceConstructor(holder.quoteSource, AppData.Fonts.Roboto.REGULAR);
+				mFont.typeFaceConstructor(holder.quoteContent, Roboto.LIGHT, getAssets());
+				mFont.typeFaceConstructor(holder.quoteSource, Roboto.REGULAR, getAssets());
 				holder.quoteDate.setText(prettyTime.format(new Date(unixtimeQuote*1000)));
 				aq.id(holder.textIcon).image(R.drawable.type_leathr_quote_icon);
 				break;
@@ -169,7 +170,7 @@ public abstract class StreamActivity extends BaseActivity {
 			case AppData.DBConstants.TypeOfContent.LINK:
 				long unixtimeLink = Long.parseLong( streamArrayList.get(position).unixtime );
 				holder.linkContent.setText(streamArrayList.get(position).content);
-				typeFaceConstructor(holder.linkContent, AppData.Fonts.Roboto.LIGHT);
+				mFont.typeFaceConstructor(holder.linkContent, Roboto.LIGHT, getAssets());
 				holder.linkDate.setText( prettyTime.format(new Date(unixtimeLink*1000)) );
 				aq.id(holder.textIcon).image(R.drawable.type_leathr_link_icon);
 				break;

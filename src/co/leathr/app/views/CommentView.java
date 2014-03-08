@@ -6,6 +6,7 @@ import com.google.android.gms.plus.model.people.PersonBuffer;
 import co.leathr.app.R;
 import co.leathr.app.activities.BaseActivity;
 import co.leathr.app.data.AppData;
+import co.leathr.app.data.AppData.Fonts.Roboto;
 import co.leathr.app.data.SQLiteStreamDB;
 import co.leathr.app.data.TimeStampHanlder;
 
@@ -34,7 +35,7 @@ public class CommentView extends BaseActivity {
 		
 		/* Start Views */
 		commentEditText = (EditText) findViewById(R.id.commentText);
-		typeFaceConstructor(commentEditText, AppData.Fonts.Roboto.REGULAR);
+		mFont.typeFaceConstructor(commentEditText, Roboto.REGULAR, getAssets());
 		
 		/* Deal with incoming share intent */
 		handleExternalIntent();
