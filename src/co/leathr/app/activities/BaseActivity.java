@@ -1,10 +1,18 @@
 package co.leathr.app.activities;
 
+import java.io.IOException;
+
 import co.leathr.app.R;
 import co.leathr.app.data.AppData;
 import co.leathr.app.data.AppData.Fonts;
+import co.leathr.app.data.AppData.GPLusConstants;
+import co.leathr.app.data.AppData.ViewNames;
 
 import com.androidquery.AQuery;
+
+import com.google.android.gms.auth.GoogleAuthException;
+import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.auth.UserRecoverableAuthException;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
@@ -18,6 +26,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,12 +38,15 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 	
 	protected Context contextActivity;
 	protected PlusClient mPlusClient;
-	protected Person mPlusPerson;
+	protected Person mPerson;
 	protected ProgressDialog mConnectionProgressDialog;
 	protected ConnectionResult mConnectionResult;
 	protected AQuery aq;
 	
 	protected String userPlusID;
+	protected String userFullName;
+	protected String picasaToken;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +91,23 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 	}
 	
 	@Override
+	public void onPeopleLoaded(ConnectionResult status, PersonBuffer personBuffer, String nextPageToken) {
+
+		if (status.getErrorCode() == ConnectionResult.SUCCESS) {
+			//Get Person
+			mPerson = personBuffer.get(0);
+			//User's name and userId
+			userFullName = mPerson.getName().getGivenName() + " " + mPerson.getName().getFamilyName();
+			userPlusID = mPerson.getId();
+			Log.i(ViewNames.BASE_ACTIVITY, userFullName);
+			Log.i(ViewNames.BASE_ACTIVITY, userPlusID);
+			//Get Picasa Token Via AsyncTask
+			
+		}
+		
+	}
+	
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if ((requestCode == AppData.GPLusConstants.REQUEST_CODE_RESOLVE_ERR) && (resultCode == RESULT_OK)) {
@@ -108,12 +137,57 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 	
 	public void assignUserID(ConnectionResult status, PersonBuffer personBuffer) {
 		if (status.getErrorCode() == ConnectionResult.SUCCESS) {
-			mPlusPerson = personBuffer.get(0);
-			userPlusID = mPlusPerson.getId();
+			mPerson = personBuffer.get(0);
+			userPlusID = mPerson.getId();
 		}
 	}
 	
 	/* Activity Animation */
+	protected void getPicasaOAuthTokenASyncTask() {
+		
+		//Get userOAuthToken with AsyncTask
+		AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
+
+			@Override
+			protected String doInBackground(Void... params) {
+				String picasaReceivedToken = "";
+				
+				try {
+					picasaReceivedToken = GoogleAuthUtil.getToken(BaseActivity.this, mPlusClient.getAccountName(), "oauth2:" + GPLusConstants.SCOPES[2]);
+				} catch (IOException e) {
+					// Network or Server error, try later: handle exception
+					Log.e(ViewNames.BASE_ACTIVITY, e.toString());
+				} catch (UserRecoverableAuthException e) {
+					// Recover intent: handle exception
+					Log.e(ViewNames.BASE_ACTIVITY, e.toString());
+				} catch (GoogleAuthException e) {
+					// Complete and epic fail!: handle exception
+					Log.e(ViewNames.BASE_ACTIVITY, e.toString());
+				}
+				
+				return picasaReceivedToken;
+			}
+			
+			@Override
+			protected void onPostExecute(String resultToken) {
+				super.onPostExecute(resultToken);
+				
+				//Check Token status
+				if (!resultToken.equals("")) {
+					picasaToken = resultToken; // Token Successfully received
+					Log.d(ViewNames.PICASA_API, picasaToken);
+				} else {
+					picasaToken = "";
+					Log.d(ViewNames.PICASA_API, "picasa token not recieved");
+				}
+			}
+			
+		};
+		
+		task.execute(); // get Token class is now executing
+		
+	}
+	
 	protected void activityTransitionAnimation_bottomUp() {
 		overridePendingTransition(R.anim.activity_bottomup_enter, R.anim.activity_bottomup_exit);
 	}

@@ -95,8 +95,7 @@ public class LoginView extends BaseActivity implements OnClickListener {
 	@Override
 	public void onPeopleLoaded(ConnectionResult status, PersonBuffer personBuffer, String nextPageToken) {
 		if (status.getErrorCode() == ConnectionResult.SUCCESS) {
-			mPlusPerson = personBuffer.get(0);
-			//Get Picasa Token via async task!
+			mPerson = personBuffer.get(0);
 			Intent homeViewIntent = new Intent(LoginView.this, HomeView.class);
 			gotoView(homeViewIntent);
 			activityTransitionAnimation_fromRight();

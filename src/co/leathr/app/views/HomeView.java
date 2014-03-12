@@ -17,6 +17,7 @@ import com.google.android.gms.plus.model.people.PersonBuffer;
 import co.leathr.app.R;
 import co.leathr.app.activities.StreamActivity;
 import co.leathr.app.data.AppData;
+import co.leathr.app.data.AppData.ViewNames;
 
 public class HomeView extends StreamActivity {
 	
@@ -45,14 +46,19 @@ public class HomeView extends StreamActivity {
 
 	@Override
 	public void onPeopleLoaded(ConnectionResult status, PersonBuffer personBuffer, String nextPageToken) {
-		// TODO null for now
+		
 		if (status.getErrorCode() == ConnectionResult.SUCCESS) {
 			//Get the person
 			Person person = personBuffer.get(0);
+			
 			//User's name and userId
 			userFullName = person.getName().getGivenName() + " " + person.getName().getFamilyName();
 			userPlusID = person.getId();
-			Log.i(AppData.ViewNames.HOME_VIEW, person.getName().getGivenName() + " " + person.getName().getFamilyName());
+			Log.i(ViewNames.HOME_VIEW, userFullName);
+			Log.i(ViewNames.HOME_VIEW, userPlusID);
+			
+			//Get Picasa Token Via ASync task
+			getPicasaOAuthTokenASyncTask();
 		}
 	}
 

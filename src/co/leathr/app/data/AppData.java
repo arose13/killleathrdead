@@ -3,6 +3,7 @@ package co.leathr.app.data;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.widget.TextView;
+
 import co.leathr.app.R;
 
 import com.google.android.gms.common.Scopes;
@@ -23,8 +24,8 @@ public class AppData {
 			};
 			
 			public static String[] SCOPES = new String[] {
-				Scopes.PLUS_LOGIN, //Gplus login scope
-				Scopes.PLUS_PROFILE, //Gplus profile scope
+				Scopes.PLUS_LOGIN, //GPlus login scope
+				Scopes.PLUS_PROFILE, //GPlus profile scope
 				"http://picasaweb.google.com/data/", //Picasa web album scope
 				"https://www.googleapis.com/auth/drive.appdata" //Drive scope
 			};
@@ -76,7 +77,7 @@ public class AppData {
 			public static final String REGULAR = FRONT + ROBOTOGROUP + "Regular" + BACK;
 		}
 		
-		/* Typeface constructor */
+		/* TypeFace constructor */
 		public void typeFaceConstructor(TextView textView, String fontPath, AssetManager assets) {
 			Typeface customTypeface = Typeface.createFromAsset(assets, fontPath);
 			textView.setTypeface(customTypeface);
@@ -113,6 +114,46 @@ public class AppData {
 		
 	}
 	
+	/* Handles all of the apps images */
+	public static class PicasaAPI {
+		
+		public static final String ALBUMTYPE = "InstantUpload";
+		public static final String GIF = ".gif";
+		public static final String MP4 = ".mp4";
+		
+		public String getAllAlbumsURL(String userID, String oauthKey) {
+			String albumURL = "http://picasaweb.google.com/data/feed/api/user/" + userID
+					+ "?v=2&access_token=" + oauthKey;
+			return albumURL;
+		}
+		
+		public String getPhotosURLs(String userID, String oauthKey, int maxResults) {
+			String photosURLs = "https://picasaweb.google.com/data/feed/api/user/" + userID
+					+ "?kind=photo&max-results=" + String.valueOf(maxResults)
+					+ "&access_token=" + oauthKey;
+			return photosURLs;
+		}
+		
+		public String getPhotosFromAlbum(String userID, String albumID, String oauthKey, int maxResults) {
+			String photosURL = "https://picasaweb.google.com/data/feed/api/user/" + userID
+					+ "/albumid/" + albumID
+					+ "?max-results=" + String.valueOf(maxResults)
+					+ "&access_token=" + oauthKey;
+			return photosURL;
+		}
+		
+		public static class FileTypeCheck {
+			public boolean gifmp4Checker(String imageTitle) {
+				if ( (imageTitle.contains(GIF))||(imageTitle.contains(MP4)) ) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		
+	}
+	
 	public static class RayMenuConstants {
 		public static final int[] ITEM_DRAWABLES = {
 			R.drawable.ic_leathr_image_icon_round,
@@ -130,10 +171,12 @@ public class AppData {
 	}
 	
 	public final static class ViewNames {
+		public static final String PICASA_API = "picasaAPI";
 		public static final String LOGIN_VIEW = "loginView";
 		public static final String HOME_VIEW = "homeView";
 		public static final String COMMENT_VIEW = "commentView";
 		public static final String QUOTE_VIEW = "quoteView";
+		public static final String BASE_ACTIVITY = "baseActivity";
 	}
 	
 }

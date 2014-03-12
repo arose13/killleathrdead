@@ -24,8 +24,6 @@ import android.widget.TextView;
 
 public abstract class StreamActivity extends BaseActivity {
 	
-	protected String userFullName;
-	
 	protected ListView streamListView;
 	protected PrettyTime prettyTime;
 	
