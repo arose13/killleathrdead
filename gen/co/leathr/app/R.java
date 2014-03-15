@@ -400,10 +400,14 @@ containing a value of this type.
         public static final int comment_view=0x7f030001;
         public static final int home_view=0x7f030002;
         public static final int list_image_1=0x7f030003;
-        public static final int list_text=0x7f030004;
-        public static final int login_view=0x7f030005;
-        public static final int quote_view=0x7f030006;
-        public static final int ray_menu=0x7f030007;
+        public static final int list_image_2=0x7f030004;
+        public static final int list_image_3=0x7f030005;
+        public static final int list_image_4=0x7f030006;
+        public static final int list_image_5=0x7f030007;
+        public static final int list_text=0x7f030008;
+        public static final int login_view=0x7f030009;
+        public static final int quote_view=0x7f03000a;
+        public static final int ray_menu=0x7f03000b;
     }
     public static final class menu {
         public static final int comment_view=0x7f0b0000;
