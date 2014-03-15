@@ -50,6 +50,13 @@ public abstract class StreamActivity extends BaseActivity {
 		public TextView quoteContent;
 		public TextView quoteSource;
 		
+		//Image card views
+		public ImageView image1;
+		public ImageView image2;
+		public ImageView image3;
+		public ImageView image4;
+		public TextView imageDate;
+		
 		//overflow item
 		public ImageView overflowBtn;
 		
