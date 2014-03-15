@@ -1,6 +1,7 @@
 <resources>
 	
     <!-- Screen Dimens -->
+    <dimen name="margin_vsm">2dp</dimen>
     <dimen name="margin_sm">4dp</dimen>
     <dimen name="margin">8dp</dimen>
     <dimen name="margin_med">16dp</dimen>
@@ -16,5 +17,6 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="card_radius">4dp</dimen>
 
 </resources>

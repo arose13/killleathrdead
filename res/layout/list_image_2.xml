@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin"
+    android:background="@drawable/card"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_sm"
+    tools:ignore="ContentDescription" >
+
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_sm"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_placerholder_size1" />
+
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_placerholder_size1" />
+
+    <TextView
+        android:id="@+id/imageComment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/imageTime"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/datePlaceholderText"
+        android:textColor="@android:color/darker_gray" />
 
 </LinearLayout>

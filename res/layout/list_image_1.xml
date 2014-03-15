@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/margin_med" >
+    android:layout_margin="@dimen/margin"
+    android:padding="@dimen/margin_sm"
+    android:background="@drawable/card" >
 
     <ImageView
-        android:id="@+id/imageSimple"
+        android:id="@+id/image1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
