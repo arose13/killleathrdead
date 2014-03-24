@@ -7,7 +7,7 @@ import co.leathr.app.R;
 import co.leathr.app.activities.BaseActivity;
 import co.leathr.app.data.AnimationCustom;
 import co.leathr.app.data.AppData;
-import co.leathr.app.data.AppData.Fonts;
+import co.leathr.app.data.Fonts;
 
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;

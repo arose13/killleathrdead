@@ -1,14 +1,20 @@
 package co.leathr.app.activities;
 
 import java.io.IOException;
+import java.util.List;
 
 import co.leathr.app.R;
 import co.leathr.app.data.AppData;
-import co.leathr.app.data.AppData.Fonts;
+import co.leathr.app.data.Fonts;
+import co.leathr.app.data.PicasaAPI;
+import co.leathr.app.data.SQLiteStreamDB;
+import co.leathr.app.data.XmlTags;
 import co.leathr.app.data.AppData.GPLusConstants;
 import co.leathr.app.data.AppData.ViewNames;
 
 import com.androidquery.AQuery;
+import com.androidquery.callback.AjaxStatus;
+import com.androidquery.util.XmlDom;
 
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
@@ -26,6 +32,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +42,11 @@ import android.view.animation.AnimationUtils;
 
 public abstract class BaseActivity extends Activity implements ConnectionCallbacks, OnConnectionFailedListener, OnPeopleLoadedListener {
 	
-	protected AppData.Fonts mFont = new Fonts();
+	protected Fonts mFont = new Fonts();
+	
+	protected static boolean wifiConnected = false;
+	protected static boolean mobileConnected = false;
+	protected static boolean refreshDisplay = true;
 	
 	protected Context contextActivity;
 	protected PlusClient mPlusClient;
@@ -76,7 +88,7 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 	
 	@Override
 	public void onConnectionFailed(ConnectionResult result) {
-		// TODO The user clicked the sign-in button already
+		// The user clicked the sign-in button already
 		if (mConnectionProgressDialog.isShowing()) {
 			if (result.hasResolution()) {
 				try {
@@ -175,6 +187,7 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 				//Check Token status
 				if (!resultToken.equals("")) {
 					picasaToken = resultToken; // Token Successfully received
+					getNewImages();
 					Log.d(ViewNames.PICASA_API, picasaToken);
 				} else {
 					picasaToken = "";
@@ -187,6 +200,67 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 		task.execute(); // get Token class is now executing
 		
 	}
+	
+	/* Picasa Get Images Methods Are Below */
+	private void getNewImages() {
+		updateInternetConnectionFlags();
+		// Check to see if we actually have the Picasa Token
+		if (refreshDisplay && !picasaToken.equals("")) {
+			
+			// Check wifi or mobile is available
+			if (wifiConnected || mobileConnected) {
+				String albumURL = PicasaAPI.getAllAlbumsURL(mPlusClient.getCurrentPerson().getId(), picasaToken);
+				aq.ajax(albumURL, XmlDom.class, this, PicasaAPI.CallBackListner.GET_INSTANTUPLOAD_IMAGES);
+			} else {
+				Log.d(ViewNames.HOME_VIEW, "Internet not available");
+			}
+			
+		}
+	}
+	
+	public void picasaInstantUploadCallBack(String url, XmlDom xml, AjaxStatus status) {
+		List<XmlDom> entries = xml.tags(XmlTags.ENTRY);
+		String albumID = "";
+		for (XmlDom entry:entries) {
+			if (entry.text(XmlTags.GPhoto.ABLUMTYPE).equals(PicasaAPI.ALBUMTYPE)) {
+				albumID = entry.text(XmlTags.GPhoto.ID);
+				String photosURL = PicasaAPI.getPhotosFromAlbum(mPlusClient.getCurrentPerson().getId(), albumID, picasaToken, PicasaAPI.MaxResults.LARGE);
+				aq.ajax(photosURL, XmlDom.class, this, PicasaAPI.CallBackListner.GET_ALL_IMAGES_FROM_URL);
+			}
+		}
+	}
+	
+	public void picasaGetImagesFromUrlCallBack(String photoListURL, XmlDom xml, AjaxStatus status) {
+		List<XmlDom> imageEntries = xml.tags(XmlTags.ENTRY);
+		
+		// Setup the database connection
+		SQLiteStreamDB streamDB = new SQLiteStreamDB(getApplicationContext());
+		streamDB.open();
+		
+		// Start getting all the information from XML 
+		for (XmlDom entry : imageEntries) {
+			String id = entry.text(XmlTags.ImageTags.ID);
+//			String title = entry.text(XmlTags.ImageTags.TITLE);
+//			String published = entry.text(XmlTags.ImageTags.PUBLISHED);
+//			String timestamp = entry.text(XmlTags.ImageTags.TIMESTAMP);
+//			String content = entry.text(XmlTags.ImageTags.CONTENT);
+			Log.d(ViewNames.PICASA_API, id);
+		}
+		streamDB.close();
+	}
+	
+	private void updateInternetConnectionFlags() {
+		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+		NetworkInfo activeInfo = connectivityManager.getActiveNetworkInfo();
+		if ( (activeInfo != null) && (activeInfo.isConnected()) ) {
+			wifiConnected = activeInfo.getType() == ConnectivityManager.TYPE_WIFI;
+			mobileConnected = activeInfo.getType() == ConnectivityManager.TYPE_MOBILE;
+		} else {
+			wifiConnected = false;
+			mobileConnected = false;
+		}
+	}
+
 	
 	protected void activityTransitionAnimation_bottomUp() {
 		overridePendingTransition(R.anim.activity_bottomup_enter, R.anim.activity_bottomup_exit);

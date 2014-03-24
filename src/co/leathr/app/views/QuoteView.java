@@ -12,7 +12,7 @@ import com.google.android.gms.plus.model.people.PersonBuffer;
 import co.leathr.app.R;
 import co.leathr.app.activities.BaseActivity;
 import co.leathr.app.data.AppData;
-import co.leathr.app.data.AppData.Fonts.Roboto;
+import co.leathr.app.data.Fonts.Roboto;
 import co.leathr.app.data.SQLiteStreamDB;
 import co.leathr.app.data.TimeStampHanlder;
 

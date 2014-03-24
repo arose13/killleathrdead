@@ -6,7 +6,7 @@ import java.util.Date;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import co.leathr.app.R;
-import co.leathr.app.data.AppData.Fonts.Roboto;
+import co.leathr.app.data.Fonts.Roboto;
 import co.leathr.app.data.AppObjects.StreamObject;
 import co.leathr.app.data.AppData;
 import co.leathr.app.data.SQLiteStreamDB;

@@ -1,9 +1,5 @@
 package co.leathr.app.data;
 
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
-import android.widget.TextView;
-
 import co.leathr.app.R;
 
 import com.google.android.gms.common.Scopes;
@@ -59,99 +55,6 @@ public class AppData {
 			public static final int VISABLE = 0;
 			public static final int HIDE = 1;
 		}
-	}
-	
-	public static class Fonts {
-		
-		private static final int MAX_STRING_LENGHT_FONTSIZE = 40;
-		private static final String FRONT = "fonts/";
-		private static final String BACK = ".ttf";
-		
-		public static final String APPNAME_FONT = FRONT + "GrandHotel-Regular" + BACK;
-		
-		public static final class Roboto {
-			private static final String ROBOTOGROUP = "Roboto-";
-			
-			public static final String THIN = FRONT + ROBOTOGROUP + "Thin" + BACK;
-			public static final String LIGHT = FRONT + ROBOTOGROUP + "Light" + BACK;
-			public static final String REGULAR = FRONT + ROBOTOGROUP + "Regular" + BACK;
-		}
-		
-		/* TypeFace constructor */
-		public void typeFaceConstructor(TextView textView, String fontPath, AssetManager assets) {
-			Typeface customTypeface = Typeface.createFromAsset(assets, fontPath);
-			textView.setTypeface(customTypeface);
-		}
-		
-		/* Detects whether the font size should be modified to a larger one */
-		public boolean fontSizeChangeCheck(String string) {
-			if (string.length() < MAX_STRING_LENGHT_FONTSIZE) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-		
-		/* Changes the font size based on the lenght of the string */
-		public float fontSizeModifier(String string) {
-			int returnedInteger = 0;
-			int xlarge = 26;
-			int large = 24;
-			int medium = 22;
-			
-			if (string.length() >= MAX_STRING_LENGHT_FONTSIZE) {
-				//Do Nothing
-			} else if (string.length() < MAX_STRING_LENGHT_FONTSIZE && string.length() >= 20) {
-				returnedInteger = medium;
-			} else if (string.length() < 20 && string.length() > 10) {
-				returnedInteger = large;
-			} else if (string.length() <= 10) {
-				returnedInteger = xlarge;
-			}
-			
-			return returnedInteger;
-		}
-		
-	}
-	
-	/* Handles all of the apps images */
-	public static class PicasaAPI {
-		
-		public static final String ALBUMTYPE = "InstantUpload";
-		public static final String GIF = ".gif";
-		public static final String MP4 = ".mp4";
-		
-		public String getAllAlbumsURL(String userID, String oauthKey) {
-			String albumURL = "http://picasaweb.google.com/data/feed/api/user/" + userID
-					+ "?v=2&access_token=" + oauthKey;
-			return albumURL;
-		}
-		
-		public String getPhotosURLs(String userID, String oauthKey, int maxResults) {
-			String photosURLs = "https://picasaweb.google.com/data/feed/api/user/" + userID
-					+ "?kind=photo&max-results=" + String.valueOf(maxResults)
-					+ "&access_token=" + oauthKey;
-			return photosURLs;
-		}
-		
-		public String getPhotosFromAlbum(String userID, String albumID, String oauthKey, int maxResults) {
-			String photosURL = "https://picasaweb.google.com/data/feed/api/user/" + userID
-					+ "/albumid/" + albumID
-					+ "?max-results=" + String.valueOf(maxResults)
-					+ "&access_token=" + oauthKey;
-			return photosURL;
-		}
-		
-		public static class FileTypeCheck {
-			public boolean gifmp4Checker(String imageTitle) {
-				if ( (imageTitle.contains(GIF))||(imageTitle.contains(MP4)) ) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-		}
-		
 	}
 	
 	public static class RayMenuConstants {
