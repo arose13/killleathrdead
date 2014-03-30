@@ -21,7 +21,7 @@ public class AppData {
 			
 			public static String[] SCOPES = new String[] {
 				Scopes.PLUS_LOGIN, //GPlus login scope
-				Scopes.PLUS_PROFILE, //GPlus profile scope
+				Scopes.PLUS_ME, //GPlus profile scope
 				"http://picasaweb.google.com/data/", //Picasa web album scope
 				"https://www.googleapis.com/auth/drive.appdata" //Drive scope
 			};

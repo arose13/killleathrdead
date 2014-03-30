@@ -24,7 +24,6 @@ public class CommentView extends BaseActivity {
 	private String externalIntentType;
 	
 	private EditText commentEditText;
-	private TimeStampHanlder timeStampHanlder = new TimeStampHanlder();
 	
 	private int typeEmotion = 0;
 		
@@ -99,10 +98,10 @@ public class CommentView extends BaseActivity {
 		}
 		
 		String commentText = commentEditText.getText().toString();
-		long unixTimeLong = timeStampHanlder.getCurrentUnixTime_returnLong();
-		String timeDay = timeStampHanlder.getDay(unixTimeLong);
-		String timeMonth = timeStampHanlder.getMonth(unixTimeLong);
-		String timeYear = timeStampHanlder.getYear(unixTimeLong);
+		long unixTimeLong = TimeStampHanlder.getCurrentUnixTime_returnLong();
+		String timeDay = TimeStampHanlder.getDay(unixTimeLong);
+		String timeMonth = TimeStampHanlder.getMonth(unixTimeLong);
+		String timeYear = TimeStampHanlder.getYear(unixTimeLong);
 		if ((!commentText.equals("")) && (commentText != null)) {
 			/* There is text to save */
 			SQLiteStreamDB textStreamDB = new SQLiteStreamDB(getApplicationContext());

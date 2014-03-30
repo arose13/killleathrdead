@@ -66,12 +66,11 @@ public abstract class StreamActivity extends BaseActivity {
 	 *  all the user content! like a boss!!! */
 	public class StreamAdapter extends BaseAdapter {
 		
-		TimeStampHanlder stampHandler = new TimeStampHanlder();
 		SQLiteStreamDB streamDB = new SQLiteStreamDB(getApplicationContext());
 		long currentUnixtimeLong = (System.currentTimeMillis())/1000;
-		String currentDay = stampHandler.getDay(currentUnixtimeLong);
-		String currentMonth = stampHandler.getMonth(currentUnixtimeLong);
-		String currentYear = stampHandler.getYear(currentUnixtimeLong);
+		String currentDay = TimeStampHanlder.getDay(currentUnixtimeLong);
+		String currentMonth = TimeStampHanlder.getMonth(currentUnixtimeLong);
+		String currentYear = TimeStampHanlder.getYear(currentUnixtimeLong);
 		String selectionClause = streamDB.selectBy(currentMonth, currentYear); 
 		ArrayList<StreamObject> streamArrayList = getStreamObjectList(selectionClause);
 		

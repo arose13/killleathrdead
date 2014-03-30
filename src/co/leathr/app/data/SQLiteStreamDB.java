@@ -2,6 +2,7 @@ package co.leathr.app.data;
 
 import java.util.ArrayList;
 
+import co.leathr.app.data.AppData.DBConstants.TypeOfContent;
 import co.leathr.app.data.AppObjects.StreamObject;
 
 import android.content.ContentValues;
@@ -91,11 +92,11 @@ public class SQLiteStreamDB {
 	//////////////////////////////////////////////////
 	/* All Custom Methods for handling the StreamDB */
 	
-	public void putEntry(int type, String content, String thumnail, String unixtime, String day, String month, String year, int emotion, String ownerID) {
+	public void putEntry(int type, String content, String thumbnail, String unixtime, String day, String month, String year, int emotion, String ownerID) {
 		ContentValues values = new ContentValues();
 		values.put(KEY_TYPE, type);
 		values.put(KEY_CONTENT, content);
-		values.put(KEY_THUMBNAIL, thumnail);
+		values.put(KEY_THUMBNAIL, thumbnail);
 		values.put(KEY_TIME_UNIXTIME, unixtime);
 		values.put(KEY_TIME_DAY, day);
 		values.put(KEY_TIME_MONTH, month);
@@ -133,13 +134,36 @@ public class SQLiteStreamDB {
 			int emotion = 0;
 			ArrayList<String> photoArrayList = null;
 			
-			rowID = dbc.getInt(iRowID);
-			type = dbc.getInt(iType);
-			content = dbc.getString(iContent);
-			thumbnail = dbc.getString(iThumbnail);
-			unixtime = dbc.getString(iUnixtime);
-			emotion = dbc.getInt(iEmotion);
-			resultSet.add(new StreamObject(rowID, type, content, thumbnail, unixtime, emotion, photoArrayList));
+			// Type of card check
+			if ( (dbc.getInt(iType) == TypeOfContent.PICTURE) && 
+					currentImageDateCheckMatch(
+						dbc.getString(iDay), 
+						dbc.getString(iMonth), 
+						dbc.getString(iYear), 
+						currentPicDay, 
+						currentPicMonth, 
+						currentPicYear)
+						) {
+				// Dealing with ImageCards
+				rowID = dbc.getInt(iRowID);
+				type = dbc.getInt(iType);
+				content = dbc.getString(iContent);
+				thumbnail = dbc.getString(iThumbnail);
+				unixtime = dbc.getString(iUnixtime);
+				emotion = dbc.getInt(iEmotion);
+				photoArrayList = getImagesForDate(dbc.getString(iDay), dbc.getString(iMonth), dbc.getString(iYear));
+				resultSet.add(new StreamObject(rowID, type, content, thumbnail, unixtime, emotion, photoArrayList));
+			
+			} else if ( dbc.getInt(iType) != TypeOfContent.PICTURE ) {
+				// Dealing with ImageCards
+				rowID = dbc.getInt(iRowID);
+				type = dbc.getInt(iType);
+				content = dbc.getString(iContent);
+				thumbnail = dbc.getString(iThumbnail);
+				unixtime = dbc.getString(iUnixtime);
+				emotion = dbc.getInt(iEmotion);
+				resultSet.add(new StreamObject(rowID, type, content, thumbnail, unixtime, emotion, photoArrayList));
+			}
 		}
 		
 		return resultSet;
@@ -168,6 +192,34 @@ public class SQLiteStreamDB {
 			/* No duplicates found */
 			return false;
 		}
-	}	
+	}
+	
+	public ArrayList<String> getImagesForDate(String day, String month, String year) {
+		String orderBy = KEY_TIME_UNIXTIME + " DESC";
+		String selection = KEY_TIME_DAY + "=" + "'" + day + "'" + " AND " + 
+						   KEY_TIME_MONTH + "=" + "'" + month + "'" + " AND " + 
+						   KEY_TIME_YEAR + "=" + "'" + year + "'" + " AND " +
+						   KEY_TYPE + "=" + TypeOfContent.PICTURE;
+		Cursor dbc = ourDatabase.query(DATABASE_TABLE, columns, selection, null, null, null, orderBy);
+		ArrayList<String> imageUrlList = new ArrayList<String>();
+		int iThumbnail = dbc.getColumnIndex(KEY_THUMBNAIL);
+		for (dbc.moveToFirst(); !dbc.isAfterLast(); dbc.moveToNext()) {
+			String imageSet = dbc.getString(iThumbnail);
+			imageUrlList.add(imageSet);
+		}
+		return imageUrlList;
+	}
+	
+	/////////////////////
+	/* Private Methods */
+	
+	// image current date check
+	private boolean currentImageDateCheckMatch(String imageDay, String imageMonth, String imageYear, String currentDay, String currentMonth, String currentYear) {
+		if ( imageDay.equals(currentDay) && imageMonth.equals(currentMonth) && imageYear.equals(currentYear) ) {
+			return true; // date matches
+		} else {
+			return false; // date does not match
+		}
+	}
 	
 }

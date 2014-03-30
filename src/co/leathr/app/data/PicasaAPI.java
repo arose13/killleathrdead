@@ -5,6 +5,7 @@ public class PicasaAPI {
 	public static final String ALBUMTYPE = "InstantUpload";
 	public static final String GIF = ".gif";
 	public static final String MP4 = ".mp4";
+	public static final String JPG = ".jpg";
 	
 	public static final class MaxResults {
 		public static final int VERY_LARGE = 500;
@@ -40,14 +41,38 @@ public class PicasaAPI {
 		return photosURL;
 	}
 	
+	public static String getThumbnailURL(String contentURL, String imageTitle) {
+		imageTitle = FileTypeCheck.gifmp4CheckModifier(imageTitle);
+		String composedURL = contentURL.replace(imageTitle, "");
+		composedURL = composedURL + "s144/" + imageTitle;
+		return composedURL;
+	}
+	
+	/* File Checker class */
 	public static class FileTypeCheck {
-		public boolean gifmp4Checker(String imageTitle) {
+		
+		// Checks for currently invalid types
+		public static boolean gifmp4Checker(String imageTitle) {
 			if ( (imageTitle.contains(GIF))||(imageTitle.contains(MP4)) ) {
 				return true;
 			} else {
 				return false;
 			}
 		}
+		
+		// Modifies GIF and MP4 to JPGs
+		public static String gifmp4CheckModifier(String imageTitle) {
+			String imageTitleString;
+			if (imageTitle.contains(GIF)) {
+				imageTitleString = imageTitle.replace(GIF, JPG);
+			} else if (imageTitle.contains(MP4)) {
+				imageTitleString = imageTitle.replace(MP4, JPG);
+			} else {
+				imageTitleString = imageTitle;
+			}
+			return imageTitleString;
+		}
+		
 	}
 	
 	/* Image Object For Easy Handling */

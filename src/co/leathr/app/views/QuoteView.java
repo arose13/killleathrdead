@@ -11,14 +11,13 @@ import com.google.android.gms.plus.model.people.PersonBuffer;
 
 import co.leathr.app.R;
 import co.leathr.app.activities.BaseActivity;
-import co.leathr.app.data.AppData;
+import co.leathr.app.data.AppData.DBConstants.Emotion;
+import co.leathr.app.data.AppData.DBConstants.TypeOfContent;
 import co.leathr.app.data.Fonts.Roboto;
 import co.leathr.app.data.SQLiteStreamDB;
 import co.leathr.app.data.TimeStampHanlder;
 
 public class QuoteView extends BaseActivity {
-	
-	private TimeStampHanlder timeStampHanlder = new TimeStampHanlder();
 	
 	private EditText quoteEditText;
 	private EditText quoteSourceEditText;
@@ -71,10 +70,10 @@ public class QuoteView extends BaseActivity {
 	private boolean addQuoteToDB() {
 		String quoteText = quoteEditText.getText().toString();
 		String quoteSourceText = quoteSourceEditText.getText().toString();
-		long unixTimeLong = timeStampHanlder.getCurrentUnixTime_returnLong();
-		String timeDay = timeStampHanlder.getDay(unixTimeLong);
-		String timeMonth = timeStampHanlder.getMonth(unixTimeLong);
-		String timeYear = timeStampHanlder.getYear(unixTimeLong);
+		long unixTimeLong = TimeStampHanlder.getCurrentUnixTime_returnLong();
+		String timeDay = TimeStampHanlder.getDay(unixTimeLong);
+		String timeMonth = TimeStampHanlder.getMonth(unixTimeLong);
+		String timeYear = TimeStampHanlder.getYear(unixTimeLong);
 		if ((!quoteText.equals("")) && (quoteText != null)) {
 			/* There is a quote to save */			
 			quoteSourceText = quoteSourceText_isEmptyCheck(quoteSourceText);
@@ -83,14 +82,14 @@ public class QuoteView extends BaseActivity {
 			SQLiteStreamDB quoteStreamDB = new SQLiteStreamDB(getApplicationContext());
 			quoteStreamDB.open();
 			quoteStreamDB.putEntry(
-					AppData.DBConstants.TypeOfContent.QUOTE, //Type of DB entry
+					TypeOfContent.QUOTE, //Type of DB entry
 					quoteText, // Quote itself
 					quoteSourceText, // Quote Source
 					String.valueOf(unixTimeLong), //Time of creation
 					timeDay, //Day
 					timeMonth, //Month
 					timeYear, //Year
-					AppData.DBConstants.Emotion.NONE, //Emotion type
+					Emotion.NONE, //Emotion type
 					userPlusID //UserID
 					);
 			quoteStreamDB.close();

@@ -1,13 +1,17 @@
 package co.leathr.app.activities;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import co.leathr.app.R;
 import co.leathr.app.data.AppData;
+import co.leathr.app.data.AppData.DBConstants.Emotion;
+import co.leathr.app.data.AppData.DBConstants.TypeOfContent;
 import co.leathr.app.data.Fonts;
 import co.leathr.app.data.PicasaAPI;
 import co.leathr.app.data.SQLiteStreamDB;
+import co.leathr.app.data.TimeStampHanlder;
 import co.leathr.app.data.XmlTags;
 import co.leathr.app.data.AppData.GPLusConstants;
 import co.leathr.app.data.AppData.ViewNames;
@@ -239,14 +243,50 @@ public abstract class BaseActivity extends Activity implements ConnectionCallbac
 		
 		// Start getting all the information from XML 
 		for (XmlDom entry : imageEntries) {
+			
 			String id = entry.text(XmlTags.ImageTags.ID);
-//			String title = entry.text(XmlTags.ImageTags.TITLE);
-//			String published = entry.text(XmlTags.ImageTags.PUBLISHED);
-//			String timestamp = entry.text(XmlTags.ImageTags.TIMESTAMP);
-//			String content = entry.text(XmlTags.ImageTags.CONTENT);
-			Log.d(ViewNames.PICASA_API, id);
-		}
+			
+			// Produce UnixTime day month and year
+			long timestampLong = 0;
+			String timestamp = entry.text(XmlTags.ImageTags.TIMESTAMP);
+			if (timestamp.equals("")) {
+				try {
+					timestampLong = TimeStampHanlder.getTimefromTimeStamp( entry.text(XmlTags.ImageTags.PUBLISHED) );
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			} else {
+				timestampLong = (Long.parseLong(timestamp)/1000L);
+			}
+			int unixtime = TimeStampHanlder.unixtimeToInt(timestampLong);
+			String day = TimeStampHanlder.getDay(unixtime);
+			String month = TimeStampHanlder.getMonth(unixtime);
+			String year = TimeStampHanlder.getYear(unixtime);
+			
+			// Produce thumb nail string
+			String thumbnail = PicasaAPI.getThumbnailURL(
+					entry.text(XmlTags.ImageTags.CONTENT), // Content URL 
+					entry.text(XmlTags.ImageTags.TITLE) // Image Title
+					);
+			
+			// If not duplicate then add to Database
+			if (!streamDB.checkForDuplicates(thumbnail)) {
+				Log.d(ViewNames.PICASA_API, id + " " + day + month + year);
+				streamDB.putEntry(
+						TypeOfContent.PICTURE,
+						"", 
+						thumbnail, 
+						Integer.toString(unixtime), 
+						day, 
+						month, 
+						year, 
+						Emotion.NONE, 
+						userPlusID);
+			} // End of DB entry
+
+		} // End of ForLoop
 		streamDB.close();
+		Log.d(ViewNames.PICASA_API, "Picasa sync complete");
 	}
 	
 	private void updateInternetConnectionFlags() {
