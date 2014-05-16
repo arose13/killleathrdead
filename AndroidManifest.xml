@@ -23,7 +23,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/ActionBar.Solid.Leathrfinalfantasy" >
         
         <activity
             android:name="co.leathr.app.views.LoginView"
@@ -37,7 +37,6 @@
         
         <activity
             android:name="co.leathr.app.views.HomeView"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.HOMEVIEW" />
